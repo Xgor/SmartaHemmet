@@ -8,17 +8,17 @@ public class Refrigerator
     
     public void StartCooling()
     {
-        
+        Console.WriteLine("turned cooling on");
     }
 
     public void StopCooling()
     {
-        
+        Console.WriteLine("turned cooling off");
     }
 
     public void PrintCoolingEnergy()
     {
-        
+        Console.WriteLine("using 2 kw energy");
     }
 
 }

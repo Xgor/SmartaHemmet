@@ -7,17 +7,17 @@ public class Oven
      
     public void StartHeating()
     {
-        
+        Console.WriteLine("Started Heating");
     }
 
     public void StopHeating()
     {
-        
+        Console.WriteLine("Stopped heating");
     }
 
     public void PrintHeatingEnergy()
     {
-        
+        Console.WriteLine("heating used 4 kw");
     }
 
 }

@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using SmartaHemmet.Appliances;
+
 class Program
 {
     static void Main()
     {
         List<object> devices = new List<object>();
-        // TODO:
         // Skapa minst fyra objekt:
         // Washer, Refrigerator, Oven och RobotVacuum.
         // Lägg till dem i listan devices.
+        devices.Add(new Washer());
+        devices.Add(new Refrigerator());
+        devices.Add(new Oven());
+        devices.Add(new RobotVaccum());
+        
         RunMorningRoutine(devices);
         Console.WriteLine();
         ReportAllEnergy(devices);
@@ -17,21 +23,48 @@ class Program
     {
         foreach (object device in devices)
         {
-            // TODO:
-            // 1. Kontrollera vilken typ device är.
-            // 2. Casta till rätt typ.
-            // 3. Anropa rätt startmetod.
-            // 4. Anropa rätt stoppmetod.
+            if (device is Washer washer)
+            {
+                washer.StartWash();
+                washer.StopWash();
+            }
+            else if (device is Refrigerator refrigerator)
+            {
+                refrigerator.StartCooling();
+                refrigerator.StopCooling();
+            }
+            else if (device is Oven oven)
+            {
+                oven.StartHeating();
+                oven.StopHeating();
+            }
+            else if (device is RobotVaccum vaccum)
+            {
+                vaccum.StartCleaning();
+                vaccum.StopCleaning();
+            }
         }
     }
     static void ReportAllEnergy(List<object> devices)
     {
         foreach (object device in devices)
         {
-            // TODO:
-            // 1. Kontrollera vilken typ device är.
-            // 2. Casta till rätt typ.
-            // 3. Anropa rätt energimetod.
+            if (device is Washer washer)
+            {
+                washer.PrintWashEnergy();
+            }
+            else if (device is Refrigerator refrigerator)
+            {
+                refrigerator.PrintCoolingEnergy();
+            }
+            else if (device is Oven oven)
+            {
+                oven.PrintHeatingEnergy();
+            }
+            else if (device is RobotVaccum vaccum)
+            {
+                vaccum.PrintCleaningEnergy();
+            }
         }
     }
 }
