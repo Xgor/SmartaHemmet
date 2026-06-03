@@ -1,24 +1,31 @@
 namespace SmartaHemmet.Appliances;
 
-public class CoffeeMachine
+public class CoffeeMachine(string brand, string room, int cupsPerBrew) : Appliance(brand, room)
 {
-    public string Brand { get; set; }
-    public int CupsPerBrew { get; set; }
+    public int CupsPerBrew { get; set; } = cupsPerBrew;
 
-    public void StartBrewing()
+    public override string GetInfo()
     {
-        Console.WriteLine("Started brewing");
+        return $"{Brand} coffee brewer in {room} can brew up to {CupsPerBrew} cups per brew!";
     }
 
-    public void StopBrewing()
+    public override void TurnOn()
     {
-        Console.WriteLine("Stopped brewing");
+        IsOn = true;
+        Console.WriteLine($"{Brand} coffeeMachine is turned on and ready for brewing");
     }
 
-    public void PrintBrewingEnergy()
+    public override void TurnOff()
     {
-        Console.WriteLine("Uses 44.1 kWh per brewing");
+        IsOn = false;
+        Console.WriteLine($"{Brand} coffeeMachine will stop boiling now");
     }
+
+    public override double GetDailyEnergyUsage()
+    {
+        return 0.3;
+    }
+
 }
 // när jag la till CoffeeMachine i koden behövde jag ändra på 3 ställen.
 // Skapa upp den, caste den båda gångerna sen kolla med sätta på och av båda

@@ -1,23 +1,29 @@
 namespace SmartaHemmet.Appliances;
 
-public class RobotVaccum
+public class RobotVaccum(string brand, string room, float batteryLevel) : Appliance(brand, room)
 {
-    public string Brand { get; set; }
-    public float CapacityKG { get; set; }
-         
-    public void StartCleaning()
+    public float BatteryLevel { get; set; }
+        
+    public override string GetInfo()
     {
-        Console.WriteLine("start cleaing");
+        return $"your {Brand} vaccum is currently in {room} room and currently is at {batteryLevel * 100}%";
     }
 
-    public void StopCleaning()
+    public override void TurnOn()
     {
-        Console.WriteLine("Stopped cleaning");
+        IsOn = true;
+        Console.WriteLine($"{Brand} vaccum is now currently cleaning in {Room}");
     }
 
-    public void PrintCleaningEnergy()
+    public override void TurnOff()
     {
-        Console.WriteLine("cleaning uses 4kw");
+        IsOn = false;
+        Console.WriteLine($"{Brand} vaccum is now turned off. Please move it to a charging station from {Room}");
+    }
+
+    public override double GetDailyEnergyUsage()
+    {
+        return 0.4;
     }
 
 }

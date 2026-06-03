@@ -1,23 +1,29 @@
 namespace SmartaHemmet.Appliances;
 
-public class Oven
+public class Oven(string brand, string room, int maxTemperature) : Appliance(brand, room)
 {
-    public string Brand { get; set; }
-    public float CapacityKG { get; set; }
-     
-    public void StartHeating()
+    public int MaxTemperature { get; set; } = maxTemperature;
+
+    public override string GetInfo()
     {
-        Console.WriteLine("Started Heating");
+        return $"{Brand} oven in {Room} room can get up to {MaxTemperature} degrees"; //Kanske ha något om celcius eller farenheigt
     }
 
-    public void StopHeating()
+    public override void TurnOn()
     {
-        Console.WriteLine("Stopped heating");
+        IsOn = true;
+        Console.WriteLine($"{Brand} oven starts preheating");
     }
 
-    public void PrintHeatingEnergy()
+    public override void TurnOff()
     {
-        Console.WriteLine("heating used 4 kw");
+        IsOn = false;
+        Console.WriteLine($"{Brand} oven stopped heat");
     }
 
+    public override double GetDailyEnergyUsage()
+    {
+        return 2.5;
+    }
+    
 }

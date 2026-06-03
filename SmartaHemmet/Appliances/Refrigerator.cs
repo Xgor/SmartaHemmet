@@ -1,24 +1,29 @@
 namespace SmartaHemmet.Appliances;
 
-public class Refrigerator
+public class Refrigerator(string brand, string room, float temprature) : Appliance(brand, room)
 {
-    
-    public string Brand { get; set; }
-    public float CapacityKG { get; set; }
-    
-    public void StartCooling()
+
+    public float Temprature { get; set; } = temprature;
+   
+    public override string GetInfo()
     {
-        Console.WriteLine("turned cooling on");
+        return $"{Room} {Brand} refigerator is at {Temprature} degrees.";
     }
 
-    public void StopCooling()
+    public override void TurnOn()
     {
-        Console.WriteLine("turned cooling off");
+        IsOn = true;
+        Console.WriteLine($"{Brand} refrigerator will now start cooling");
     }
 
-    public void PrintCoolingEnergy()
+    public override void TurnOff()
     {
-        Console.WriteLine("using 2 kw energy");
+        IsOn = false;
+        Console.WriteLine($"{Brand} refrigerator is turned of. please remove everything from it.");
     }
 
+    public override double GetDailyEnergyUsage()
+    {
+        return 3.6;
+    }
 }
