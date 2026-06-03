@@ -14,6 +14,7 @@ class Program
         devices.Add(new Refrigerator());
         devices.Add(new Oven());
         devices.Add(new RobotVaccum());
+        devices.Add(new CoffeeMachine());
         
         RunMorningRoutine(devices);
         Console.WriteLine();
@@ -43,6 +44,11 @@ class Program
                 vaccum.StartCleaning();
                 vaccum.StopCleaning();
             }
+            else if (device is CoffeeMachine coffeeMachine)
+            {
+                coffeeMachine.StartBrewing();
+                coffeeMachine.StopBrewing();
+            }
         }
     }
     static void ReportAllEnergy(List<object> devices)
@@ -64,6 +70,10 @@ class Program
             else if (device is RobotVaccum vaccum)
             {
                 vaccum.PrintCleaningEnergy();
+            }
+            else if (device is CoffeeMachine coffeeMachine)
+            {
+                coffeeMachine.PrintBrewingEnergy();
             }
         }
     }
