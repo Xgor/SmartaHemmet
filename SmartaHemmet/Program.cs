@@ -4,77 +4,35 @@ using SmartaHemmet.Appliances;
 
 class Program
 {
+    
     static void Main()
     {
-        List<object> devices = new List<object>();
+        List<Appliance> devices = new List<Appliance>();
         // Skapa minst fyra objekt:
         // Washer, Refrigerator, Oven och RobotVacuum.
         // Lägg till dem i listan devices.
-        devices.Add(new Washer());
-        devices.Add(new Refrigerator());
-        devices.Add(new Oven());
-        devices.Add(new RobotVaccum());
-        devices.Add(new CoffeeMachine());
-        
+        devices.Add(new Washer("Cylinda","Bathroom",18));
+        devices.Add(new Refrigerator("Electrolux","Kitchen",2));
+        devices.Add(new Oven("Elon","Kitchen",300));
+        devices.Add(new RobotVaccum("Tesla","Bedroom",0.67f));
+        devices.Add(new CoffeeMachine("Nespresso","Living room",2));
         RunMorningRoutine(devices);
-        Console.WriteLine();
         ReportAllEnergy(devices);
     }
-    static void RunMorningRoutine(List<object> devices)
+    static void RunMorningRoutine(List<Appliance> devices)
     {
-        foreach (object device in devices)
+        foreach (Appliance device in devices)
         {
-            if (device is Washer washer)
-            {
-                washer.StartWash();
-                washer.StopWash();
-            }
-            else if (device is Refrigerator refrigerator)
-            {
-                refrigerator.StartCooling();
-                refrigerator.StopCooling();
-            }
-            else if (device is Oven oven)
-            {
-                oven.StartHeating();
-                oven.StopHeating();
-            }
-            else if (device is RobotVaccum vaccum)
-            {
-                vaccum.StartCleaning();
-                vaccum.StopCleaning();
-            }
-            else if (device is CoffeeMachine coffeeMachine)
-            {
-                coffeeMachine.StartBrewing();
-                coffeeMachine.StopBrewing();
-            }
+            device.TurnOn();
+            device.TurnOff();
         }
     }
-    static void ReportAllEnergy(List<object> devices)
+    
+    static void ReportAllEnergy(List<Appliance> devices)
     {
-        foreach (object device in devices)
+        foreach (Appliance device in devices)
         {
-            if (device is Washer washer)
-            {
-                washer.PrintWashEnergy();
-            }
-            else if (device is Refrigerator refrigerator)
-            {
-                refrigerator.PrintCoolingEnergy();
-            }
-            else if (device is Oven oven)
-            {
-                oven.PrintHeatingEnergy();
-            }
-            else if (device is RobotVaccum vaccum)
-            {
-                vaccum.PrintCleaningEnergy();
-            }
-            else if (device is CoffeeMachine coffeeMachine)
-            {
-                coffeeMachine.PrintBrewingEnergy();
-            }
+            Console.WriteLine($"{device.Brand} {device.GetType()} uses {device.GetDailyEnergyUsage()} kWh per use");
         }
     }
 }
