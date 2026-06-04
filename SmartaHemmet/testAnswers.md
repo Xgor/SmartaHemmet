@@ -62,3 +62,13 @@ För att alla maskiner behöver det inte så ingen ide att tvinga på
 
 Arv har med en massa klasser och parametrar inbyggt och kan fungera att ärva utan göra några större skillnader (Och kan bara ärva från en)
 Interface är en ritning som säger "Detta måste du ha" och alla dessa måste sättas in manuellt.
+
+## Del 10 (virtual och override)
+1. Vad säger kompilatorn i dina child classes där du använder override?
+
+`Oven.cs(12, 26): [CS0506] 'Oven.TurnOn()': cannot override inherited member 'Appliance.TurnOn()' because it is not marked virtual, abstract, or override`
+
+2. Vad föreslår C# att du ska använda om du tar bort override?
+
+Får `The keyword 'new' is required on 'TurnOn' because it hides method 'void SmartaHemmet.Appliances.Appliance.TurnOn()'`. Dock kan ha varit för jag kör Rider och att den föreslår shadowing innan override vilket känner mer naturligt
+   Kör just nu basklass `TurnOn()` istället för barnets egna implementation även om den finns
