@@ -25,7 +25,12 @@ public class SmartHomeController
     {
         // Loopa igenom alla devices.
         // Skriv ut GetInfo() och om apparaten är på eller av.
-        _devices.ForEach(d => Console.WriteLine($"{d.GetInfo()} is currently {d.IsOn : 'On' ? 'Off'}"));
+        _devices.ForEach(d =>
+        {
+            string isOnString = d.IsOn? "On" : "Off"; 
+            Console.WriteLine($"{d.GetInfo()} is currently {isOnString}");
+            
+        }); 
     }
     public double GetTotalDailyEnergyUsage()
     {
