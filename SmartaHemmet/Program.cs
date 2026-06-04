@@ -16,4 +16,6 @@ Console.WriteLine();
 double totalEnergy = controller.GetTotalDailyEnergyUsage();
 Console.WriteLine($"Total daily energy usage: {totalEnergy} kWh");
 Console.WriteLine();
+controller.ScheduleAllSchedulableDevices(DateTime.Now.AddHours(2));
+Console.WriteLine();
 controller.TurnOffAll();
