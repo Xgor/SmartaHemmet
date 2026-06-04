@@ -1,7 +1,9 @@
 namespace SmartaHemmet.Appliances;
 
-public class RobotVaccum(string brand, string room, float batteryLevel) : Appliance(brand, room)
+using Interface;
+public class RobotVaccum(string brand, string room, float batteryLevel) : Appliance(brand, room), ISchedulable
 {
+    public DateTime NextRun { get; set; }
     public float BatteryLevel { get; set; }
         
     public override string GetInfo()
@@ -24,6 +26,12 @@ public class RobotVaccum(string brand, string room, float batteryLevel) : Applia
     public override double GetDailyEnergyUsage()
     {
         return 0.4;
+    }
+    
+    public void Schedule(DateTime time)
+    {
+        NextRun = time;
+        Console.WriteLine($"Vaccum is sheduled at {time}");
     }
 
 }

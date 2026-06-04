@@ -1,8 +1,10 @@
 namespace SmartaHemmet.Appliances;
 
-public class CoffeeMachine(string brand, string room, int cupsPerBrew) : Appliance(brand, room)
+using Interface;
+public class CoffeeMachine(string brand, string room, int cupsPerBrew) : Appliance(brand, room), ISchedulable
 {
     public int CupsPerBrew { get; set; } = cupsPerBrew;
+    public DateTime NextRun { get; set; }
 
     public override string GetInfo()
     {
@@ -26,6 +28,11 @@ public class CoffeeMachine(string brand, string room, int cupsPerBrew) : Applian
         return 0.3;
     }
 
+    public void Schedule(DateTime time)
+    {
+        NextRun = time;
+        Console.WriteLine($"Washer is sheduled at {time}");
+    }
 }
 // när jag la till CoffeeMachine i koden behövde jag ändra på 3 ställen.
 // Skapa upp den, caste den båda gångerna sen kolla med sätta på och av båda

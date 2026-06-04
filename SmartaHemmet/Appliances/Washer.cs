@@ -1,7 +1,9 @@
 namespace SmartaHemmet.Appliances;
 
-public class Washer(string brand, string room, float capacityKg) : Appliance(brand, room)
+using Interface;
+public class Washer(string brand, string room, float capacityKg) : Appliance(brand, room), ISchedulable
 {
+    public DateTime NextRun { get; set; }
     public float CapacityKg { get; set; } = capacityKg;
 
     public override string GetInfo()
@@ -25,5 +27,10 @@ public class Washer(string brand, string room, float capacityKg) : Appliance(bra
     {
         return 1.2;
     }
-   
+
+    public void Schedule(DateTime time)
+    {
+        NextRun = time;
+        Console.WriteLine($"Washer is sheduled at {time}");
+    }
 }
