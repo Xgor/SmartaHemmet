@@ -33,3 +33,11 @@ foreach (ISchedulable schedulable in schedulableDevices)
 // Skriv ut NextRun eller schemalägg apparaten.
     Console.WriteLine($"next run for {schedulable.GetType()} is in {schedulable.NextRun}");
 }
+// Part 14
+Appliance? foundDevice = controller.FindDeviceByBrand("Nespresso");
+if (foundDevice != null)
+{
+    foundDevice.TurnOn();
+    if(foundDevice is ISchedulable schedulable)
+        schedulable.Schedule(DateTime.Now.AddHours(1));
+}

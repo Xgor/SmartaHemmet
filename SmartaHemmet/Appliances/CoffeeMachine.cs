@@ -31,7 +31,7 @@ public class CoffeeMachine(string brand, string room, int cupsPerBrew) : Applian
     public void Schedule(DateTime time)
     {
         NextRun = time;
-        Console.WriteLine($"Washer is sheduled at {time}");
+        Console.WriteLine($"CofeeMachine {Brand} is sheduled at {time}");
     }
 }
 // när jag la till CoffeeMachine i koden behövde jag ändra på 3 ställen.

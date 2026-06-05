@@ -67,5 +67,12 @@ public class SmartHomeController
         }
         return result;
     }
+    
+    public Appliance? FindDeviceByBrand(string brand)
+    {
+// Returnera första apparaten med rätt brand.
+// Om ingen finns kan du returnera null,
+        return _devices.FirstOrDefault(x => x.Brand == brand);
+    }
 }
 
