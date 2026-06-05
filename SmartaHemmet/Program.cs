@@ -10,6 +10,7 @@ controller.AddDevice(new Oven("Elon","Kitchen",300));
 controller.AddDevice(new RobotVaccum("Tesla","Bedroom",0.67f));
 controller.AddDevice(new CoffeeMachine("Nespresso","Living room",2));
 controller.AddDevice(new GamingConsole("Xbox", "Living room"));
+controller.AddDevice(new AirConditioner("Dyson", "Bedroom",17));
 controller.PrintStatusReport();
 Console.WriteLine();
 controller.TurnOnAll();
