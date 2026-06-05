@@ -106,9 +106,10 @@ När vi vet att implementationen för den klassens implementation är extremt vi
 Vi kan fortfarande ärva av Appliances. Vi kan också använda `new` för att tvinga in impementering om nödvändigt.
 Annars alla andra funktioner som `TurnOff()`  `SetInfo` och `GetDailyEnergyUsage()` kan overridas
 
-## Del 13 (filtrera med interface
+## Del 13 (filtrera med interface)
 1. Fråga: Varför kan listan vara `List<ISchedulable>` även om objekten egentligen är olika klasser?
 
+Eftersom vi vet att de har samma kontrakt så kan vi veta att de är kompatibla att köra den funktionaliteten som kontraktet säger att de har
 
 # Checklista
 - [x] Appliance
@@ -121,5 +122,5 @@ Annars alla andra funktioner som `TurnOff()`  `SetInfo` och `GetDailyEnergyUsage
 - [x] ISchedulable
 - [x] casting till interface
 - [x] `List<Appliance>`
-- [ ] `List<ISchedulable>` i extrautmaningen
+- [x] `List<ISchedulable>` i extrautmaningen
 - [x] SmartHomeController

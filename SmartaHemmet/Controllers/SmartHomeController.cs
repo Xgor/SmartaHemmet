@@ -54,6 +54,18 @@ public class SmartHomeController
             
         }
     }
-
+    
+    internal List<ISchedulable> GetSchedulableDevices()
+    {
+        List<ISchedulable> result = new List<ISchedulable>();
+        foreach (Appliance device in _devices)
+        {
+            if (device is ISchedulable sheduable)
+            {
+                result.Add(sheduable);
+            }
+        }
+        return result;
+    }
 }
 

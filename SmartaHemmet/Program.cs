@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SmartaHemmet.Appliances;
+using SmartaHemmet.Appliances.Interface;
 using SmartaHemmet.Controllers;
 SmartHomeController controller = new SmartHomeController();
 controller.AddDevice(new Washer("Cylinda","Bathroom",18));
@@ -20,7 +21,15 @@ controller.ScheduleAllSchedulableDevices(DateTime.Now.AddHours(2));
 Console.WriteLine();
 controller.TurnOffAll();
 Console.WriteLine();
+// Part 11
 SmartLamp lamp1 = new SmartLamp("IKEA", "Hallway", 80);
 Appliance lamp2 = lamp1;
 lamp1.TurnOn();
 lamp2.TurnOn();
+// Part 13
+List<ISchedulable> schedulableDevices = controller.GetSchedulableDevices();
+foreach (ISchedulable schedulable in schedulableDevices)
+{
+// Skriv ut NextRun eller schemalägg apparaten.
+    Console.WriteLine($"next run for {schedulable.GetType()} is in {schedulable.NextRun}");
+}
