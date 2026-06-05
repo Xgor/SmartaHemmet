@@ -19,3 +19,8 @@ Console.WriteLine();
 controller.ScheduleAllSchedulableDevices(DateTime.Now.AddHours(2));
 Console.WriteLine();
 controller.TurnOffAll();
+Console.WriteLine();
+SmartLamp lamp1 = new SmartLamp("IKEA", "Hallway", 80);
+Appliance lamp2 = lamp1;
+lamp1.TurnOn();
+lamp2.TurnOn();

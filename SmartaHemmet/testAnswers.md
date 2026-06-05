@@ -22,11 +22,7 @@ Du kan lägga in allting, även om de inte passar in för vad vi vill göra
 Då skulle den apparaten inte köras och även om den finns i listan skulle inte all energi rapporteras
 
 ## Del 2
-1. Hur många ställen i koden behövde du ändra för att systemet skulle fungera med CoffeeMachine?
-
-när jag la till CoffeeMachine i koden behövde jag ändra på 3 ställen.  
-Skapa upp den, casta den innan jag sätter på och av och casta när jag kollar energi
-tog 30 rader kod= 22 rader för klass + 9 i program
+- [x] Hur många ställen i koden behövde du ändra för att systemet skulle fungera med CoffeeMachine? Kommentera Svaret.
 ## Del 5 frågor
 1. Varför fungerar device.TurnOn() trots att device har typen Appliance?
 
@@ -42,11 +38,11 @@ Kan lätt skapa nya Appliances utan att behöva ändra på massa saker. Så län
 
 ## Del 9 frågor (casta till interfacet)
 - [x] Kommentera varför ScheduleAllDevicesWrong inte fungerar
-1. Varför kan vi inte anropa Schedule() direkt på en variabel av typen Appliance?
+1. Varför kan vi inte anropa `Schedule()` direkt på en variabel av typen Appliance?
 
-Eftersom alla appliances har inte Schedule() så det inte är tillåtet
+Eftersom alla appliances har inte `Schedule()` så det inte är tillåtet
 
-2. Varför fungerar det efter att vi castar till ISchedulable?
+2. Varför fungerar det efter att vi castar till `ISchedulable`?
 
 För interfacet ISchedulable har sagt att "jag har kontraktet som säger att jag måste ha  Schedule(DateTime time)" så vi vet att det fungerar
 
@@ -54,7 +50,7 @@ För interfacet ISchedulable har sagt att "jag har kontraktet som säger att jag
 
 RobotVaccum ärver Appliance och har kontraktet ISchedulable vilket betyder att den kan castas som båda och har
 
-4. Varför ska inte Schedule() ligga direkt i Appliance?
+4. Varför ska inte `Schedule()` ligga direkt i Appliance?
 
 För att alla maskiner behöver det inte så ingen ide att tvinga på
 
@@ -71,4 +67,47 @@ Interface är en ritning som säger "Detta måste du ha" och alla dessa måste s
 2. Vad föreslår C# att du ska använda om du tar bort override?
 
 Får `The keyword 'new' is required on 'TurnOn' because it hides method 'void SmartaHemmet.Appliances.Appliance.TurnOn()'`. Dock kan ha varit för jag kör Rider och att den föreslår shadowing innan override vilket känner mer naturligt
-   Kör just nu basklass `TurnOn()` istället för barnets egna implementation även om den finns
+Kör just nu basklass `TurnOn()` istället för barnets egna implementation även om den finns
+## Del 11 (new)
+1. Blir utskriften samma?
+
+Nej
+
+2. Vilken metod körs när variabeln har typen SmartLamp?
+
+Den kör `TurnOn()` implementationen i SmartLamp
+
+3. Vilken metod körs när variabeln har typen Appliance?
+
+Kör bas implementationen i Appliance
+
+4. Varför är detta farligt eller förvirrande?
+
+Eftersom polymorphism är förväntat så kan andra kodare förvänta sig att använda Appliance för att köra `TurnOn()` funktionaliteten så korrekt som möjligt medans köra med `new` kommer kräva att casta den för att få det korrekt.
+
+5. Vad händer om du byter new till override?
+
+Kommer alltid köra metoden i SmartLamp
+## Del 12 (sealed)
+1. Vad säger kompilatorn?
+2. Varför får PizzaOven inte override:a TurnOn()?
+3. När kan det vara rimligt att använda sealed override?
+4. Vad kan PizzaOven fortfarande göra i stället? Kan den override:a någon annan metod?
+
+## Del 13 (filtrera med interface
+1. Fråga: Varför kan listan vara `List<ISchedulable>` även om objekten egentligen är olika klasser?
+
+
+# Checklista
+- [x] Appliance
+- [x] minst fem child classes
+- [x] minst en extra egen apparat
+- [x] virtual
+- [x] override
+- [x] new
+- [ ] sealed override
+- [x] ISchedulable
+- [x] casting till interface
+- [x] `List<Appliance>`
+- [ ] `List<ISchedulable>` i extrautmaningen
+- [x] SmartHomeController
