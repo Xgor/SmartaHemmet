@@ -90,9 +90,21 @@ Eftersom polymorphism är förväntat så kan andra kodare förvänta sig att an
 Kommer alltid köra metoden i SmartLamp
 ## Del 12 (sealed)
 1. Vad säger kompilatorn?
+
+`  PizzaOven.cs(5, 26): [CS0239] 'PizzaOven.TurnOn()': cannot override inherited member 'Oven.TurnOn()' because it is sealed`
+
 2. Varför får PizzaOven inte override:a TurnOn()?
+
+Vi har sagt att den inte får overrida pga den är `sealed`
+
 3. När kan det vara rimligt att använda sealed override?
+
+När vi vet att implementationen för den klassens implementation är extremt viktig för att få allt att fungera rätt men vi vill fortfarande att saker ska ärva den. T.ex. att vi har en `TakeDamage` som var overridad från en objekt klass men vi vill att alla fiender ska agera samma när de tar skada så vi sätter `sealed override` på `Enemy` klassen.
+
 4. Vad kan PizzaOven fortfarande göra i stället? Kan den override:a någon annan metod?
+
+Vi kan fortfarande ärva av Appliances. Vi kan också använda `new` för att tvinga in impementering om nödvändigt.
+Annars alla andra funktioner som `TurnOff()`  `SetInfo` och `GetDailyEnergyUsage()` kan overridas
 
 ## Del 13 (filtrera med interface
 1. Fråga: Varför kan listan vara `List<ISchedulable>` även om objekten egentligen är olika klasser?
@@ -105,7 +117,7 @@ Kommer alltid köra metoden i SmartLamp
 - [x] virtual
 - [x] override
 - [x] new
-- [ ] sealed override
+- [x] sealed override
 - [x] ISchedulable
 - [x] casting till interface
 - [x] `List<Appliance>`

@@ -9,7 +9,7 @@ public class Oven(string brand, string room, int maxTemperature) : Appliance(bra
         return $"{Brand} oven in {Room} room can get up to {MaxTemperature} degrees"; //Kanske ha något om celcius eller farenheigt
     }
 
-    public override void TurnOn()
+    public sealed override void TurnOn()
     {
         IsOn = true;
         Console.WriteLine($"{Brand} oven starts preheating");
