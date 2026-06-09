@@ -7,11 +7,11 @@ För att [[CSharp|C#]] är noga med Data Typerna vilket gör att du är inte til
 
 2. Vad händer om du lägger till en ny klass CoffeeMachine?
 
-Behöver skriva om allt med liknande fuktioner men de fungerar inte med sig själv
+Om jag vill ha den i device listan behöver jag skriva om alla delar i program.cs som går igenom alla devices 
 
 3. Vilka metoder måste du ändra om du lägger till CoffeeMachine?
 
-Måste ändra i alla metoder för jag behöver göra cast för varje av dem
+Måste ändra i alla metoder för jag gör casts för varje av dem och i Main behöver jag lägga in den
 
 4. Vad är problemet med att listan är `List<object>`?
 
@@ -26,7 +26,7 @@ Då skulle den apparaten inte köras och även om den finns i listan skulle inte
 ## Del 5 frågor
 1. Varför fungerar device.TurnOn() trots att device har typen Appliance?
 
-Genom Polymorphism
+Genom Polymorphism, Eftersom den har virtual metod vet vi att det kan bli overridad. Om den inte blir det skulle fortfarande bas metoden köras
 
 2. Vilken metod körs om objektet egentligen är en RobotVacuum?
 
@@ -40,7 +40,7 @@ Kan lätt skapa nya Appliances utan att behöva ändra på massa saker. Så län
 - [x] Kommentera varför ScheduleAllDevicesWrong inte fungerar
 1. Varför kan vi inte anropa `Schedule()` direkt på en variabel av typen Appliance?
 
-Eftersom alla appliances har inte `Schedule()` så det inte är tillåtet
+Eftersom klassen Appliance har inte funkionen `Schedule()` även om del av barnen har det så tillåter cSharp dig inte at tköra det det inte är tillåtet
 
 2. Varför fungerar det efter att vi castar till `ISchedulable`?
 
@@ -64,10 +64,15 @@ Interface är en ritning som säger "Detta måste du ha" och alla dessa måste s
 
 `Oven.cs(12, 26): [CS0506] 'Oven.TurnOn()': cannot override inherited member 'Appliance.TurnOn()' because it is not marked virtual, abstract, or override`
 
+Får inte använda override om metod inte är markerat att tillåta det.
+
 2. Vad föreslår C# att du ska använda om du tar bort override?
 
-Får `The keyword 'new' is required on 'TurnOn' because it hides method 'void SmartaHemmet.Appliances.Appliance.TurnOn()'`. Dock kan ha varit för jag kör Rider och att den föreslår shadowing innan override vilket känner mer naturligt
+Får `The keyword 'new' is required on 'TurnOn' because it hides method 'void SmartaHemmet.Appliances.Appliance.TurnOn()'`. 
+
+Dock kan ha varit för jag kör Rider och att den föreslår shadowing innan override vilket känner mer naturligt
 Kör just nu basklass `TurnOn()` istället för barnets egna implementation även om den finns
+
 ## Del 11 (new)
 1. Blir utskriften samma?
 
@@ -87,7 +92,8 @@ Eftersom polymorphism är förväntat så kan andra kodare förvänta sig att an
 
 5. Vad händer om du byter new till override?
 
-Kommer alltid köra metoden i SmartLamp
+Kommer alltid köra metoden `TurnOn()` i SmartLamp oavsätt om den är castad eller inte
+
 ## Del 12 (sealed)
 1. Vad säger kompilatorn?
 
